@@ -1,6 +1,17 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { FiLogOut } from "react-icons/fi";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const location = useLocation();
+  const [signIn, setSignIn] = useState(location.pathname === "/signIn");
+
+  const toggleSignIn = () => {
+    setSignIn(!signIn);
+  };
+
   const elements = (
     <>
       <li>
@@ -55,7 +66,43 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{elements}</ul>
       </div>
       <div className="navbar-end  ">
-        <button className="btn">Logout</button>
+        {user ? (
+          <div className="flex gap-3">
+            <div className="btn btn-ghost btn-circle avatar">
+              <div className="w-12 rounded-full ">
+                <img
+                  src={
+                    user?.photoURL
+                      ? user.photoURL
+                      : "https://i.ibb.co/Ws1r9fp/images.png"
+                  }
+                />
+              </div>
+            </div>
+            <span
+              onClick={() => logOut()}
+              className="bg-rose-50 text-red-500 hover:bg-rose-100 w-12 h-12 text-2xl rounded-full flex items-center justify-center cursor-pointer shadow-md"
+            >
+              <FiLogOut />
+            </span>
+          </div>
+        ) : !signIn ? (
+          <Link
+            onClick={() => toggleSignIn()}
+            to={"/signIn"}
+            className="border border-[#26c6da] bg-[#26c6da] text-white font-semibold rounded-md px-4 py-2 text-lg"
+          >
+            Sign In
+          </Link>
+        ) : (
+          <Link
+            onClick={() => toggleSignIn()}
+            to={"/signUp"}
+            className="border border-[#26c6da] hover:bg-[#26c6da] hover:text-white duration-200 font-semibold rounded-md px-4 py-2 text-lg"
+          >
+            Sign Up
+          </Link>
+        )}
       </div>
     </div>
   );
