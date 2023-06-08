@@ -4,8 +4,9 @@ import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
 import Home from "../pages/Home/Home/Home";
 import Dashboard from "../Layouts/Dashboard";
-import ManageClasses from "../pages/Dashboard/Admin/ManageClasses";
+
 import AllUsers from "../pages/Dashboard/Admin/AllUsers";
+import AddClass from "../pages/Dashboard/Instructor/AddClass";
 
 export const router = createBrowserRouter([
   {
@@ -31,12 +32,12 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: "",
-        element: <ManageClasses></ManageClasses>,
-      },
-      {
         path: "users",
         element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "addclass",
+        element: <AddClass></AddClass>,
       },
     ],
   },

@@ -57,7 +57,10 @@ const Dashboard = () => {
             </Link>
           </li>
           <li>
-            <Link className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200">
+            <Link
+              to="/dashboard/addclass"
+              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+            >
               <MdOutlineAddToPhotos className="text-2xl" />
               Add a Class
             </Link>
