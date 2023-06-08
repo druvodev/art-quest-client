@@ -5,6 +5,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Home from "../pages/Home/Home/Home";
 import Dashboard from "../Layouts/Dashboard";
 import ManageClasses from "../pages/Dashboard/Admin/ManageClasses";
+import AllUsers from "../pages/Dashboard/Admin/AllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "",
         element: <ManageClasses></ManageClasses>,
+      },
+      {
+        path: "users",
+        element: <AllUsers></AllUsers>,
       },
     ],
   },

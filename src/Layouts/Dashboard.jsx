@@ -1,8 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
-import { FaUserCog } from "react-icons/fa";
 import useAdmin from "../hooks/useAdmin";
-import {} from "react-icons/fa";
-import { GrAddCircle } from "react-icons/gr";
+import { FaUsersCog } from "react-icons/fa";
+import { MdOutlineAddToPhotos } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 
 const Dashboard = () => {
@@ -14,12 +13,15 @@ const Dashboard = () => {
       <li>
         <Link className="px-9 py-3 flex items-center gap-2  hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9]  duration-200">
           {" "}
-          <FaUserCog className="text-2xl" />
+          <FaUsersCog className="text-2xl" />
           Manage Classes
         </Link>
       </li>
       <li>
-        <Link className="px-9 py-3 flex items-center gap-2  hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9]  duration-200">
+        <Link
+          to="/dashboard/users"
+          className="px-9 py-3 flex items-center gap-2  hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9]  duration-200"
+        >
           {" "}
           <SiGoogleclassroom className="text-2xl" />
           Manage Users
@@ -38,7 +40,7 @@ const Dashboard = () => {
       <li>
         <Link className="px-9 py-3 flex items-center gap-2  hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9]  duration-200">
           {" "}
-          <GrAddCircle className="text-2xl" />
+          <MdOutlineAddToPhotos className="text-2xl" />
           Add a Class
         </Link>
       </li>
