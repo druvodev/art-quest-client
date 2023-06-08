@@ -20,9 +20,11 @@ const Navbar = () => {
       <li tabIndex={0}>
         <Link to={"/"}>Instructors</Link>
       </li>
-
       <li>
         <Link to={"/"}>Classes</Link>
+      </li>
+      <li>
+        <Link to={"/dashboard"}>Dashboard</Link>
       </li>
     </>
   );

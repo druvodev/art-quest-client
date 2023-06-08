@@ -4,9 +4,10 @@ import { CgDanger } from "react-icons/cg";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../Shared/SocialLogin";
 
 const SignIn = () => {
-  const { signInUser, signInWithGoogle, setLoading } = useContext(AuthContext);
+  const { signInUser, setLoading } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -46,18 +47,6 @@ const SignIn = () => {
         }
       });
     setLoading(false);
-  };
-
-  const signInGoogle = () => {
-    signInWithGoogle()
-      .then(() => {
-        navigate(from, { replace: true });
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setError(error.message);
-      });
   };
 
   return (
@@ -150,19 +139,7 @@ const SignIn = () => {
           Sign In
         </button>
         <div className="divider">OR</div>
-        <ul className="flex gap-5 items-center justify-center mt-1 mb-4">
-          <li
-            onClick={() => signInGoogle()}
-            className="w-full px-4 py-3 rounded-md shadow-md shadow-sky-200 border border-sky-100 flex
-            hover:bg-gray-100 justify-center"
-          >
-            <img
-              className="h-8"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/150px-Google_%22G%22_Logo.svg.png"
-              alt="Google"
-            />
-          </li>
-        </ul>
+        <SocialLogin />
         <hr />
         <p className="text-center mt-2">
           Do not you have an account yet?{" "}

@@ -5,13 +5,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../Shared/SocialLogin";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SignUp = () => {
-  const { createUser, signInWithGoogle, setLoading } = useContext(AuthContext);
+  const { createUser, setLoading } = useContext(AuthContext);
   const [firstIsShow, setFirstIsShow] = useState(false);
   const [secondIsShow, setSecondIsShow] = useState(false);
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [error, setError] = useState("");
+  const [axiosSecure] = useAxiosSecure();
   const navigate = useNavigate();
 
   const {
@@ -39,8 +42,6 @@ const SignUp = () => {
     // Check password validation
     if (password !== confirmPassword) {
       return setError("Passwords don't match.");
-    } else if (password.length < 6) {
-      return setError("Please enter a password with at least 6 characters.");
     }
 
     // Check terms and condition field
@@ -52,7 +53,17 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         updateName(result.user, name, profilePhoto);
-        navigate("/signIn");
+
+        // upload user info in our database
+        const saveUser = {
+          name: name,
+          email: email,
+        };
+        axiosSecure.post("/users", saveUser).catch((error) => {
+          console.log(error);
+        });
+
+        navigate("/signin");
         console.log(result.user);
         setLoading(false);
       })
@@ -70,16 +81,6 @@ const SignUp = () => {
       displayName: userName,
       photoURL: profilePhoto,
     });
-  };
-
-  const signInGoogle = () => {
-    signInWithGoogle()
-      .then(() => {
-        setLoading(false);
-        navigate("/");
-      })
-      .catch((err) => console.log(err));
-    setLoading(false);
   };
 
   return (
@@ -264,19 +265,7 @@ const SignUp = () => {
           </button>
         </div>
         <div className="divider">OR</div>
-        <ul className="flex gap-5 items-center justify-center mt-1 mb-4">
-          <li
-            onClick={() => signInGoogle()}
-            className="w-full px-4 py-3 rounded-md shadow-md shadow-sky-200 border border-sky-100 flex
-            hover:bg-gray-100 justify-center"
-          >
-            <img
-              className="h-8"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/150px-Google_%22G%22_Logo.svg.png"
-              alt="Google"
-            />
-          </li>
-        </ul>
+        <SocialLogin />
         <hr />
         <div className="flex items-center justify-center mt-4">
           <p className="text-gray-800">
