@@ -5,7 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 
 const img_hosting_token = import.meta.env.VITE_image_upload_token;
 
-const AddItem = () => {
+const AddClass = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
@@ -31,6 +31,8 @@ const AddItem = () => {
             instructor: user?.displayName,
             email: user?.email,
             image: imgURL,
+            status: "pending",
+            enrolled: 0,
           };
           console.log(newItem);
           axiosSecure.post("/addclass", newItem).then((data) => {
@@ -81,7 +83,7 @@ const AddItem = () => {
             <input
               type="seats"
               {...register("seats", { required: true })}
-              placeholder="Type here"
+              placeholder="10"
               className="input input-bordered w-full "
             />
           </div>
@@ -92,7 +94,7 @@ const AddItem = () => {
             <input
               type="number"
               {...register("price", { required: true })}
-              placeholder="Type here"
+              placeholder="100.00"
               className="input input-bordered w-full "
             />
           </div>
@@ -123,11 +125,11 @@ const AddItem = () => {
         <input
           className="btn btn-warning mt-8"
           type="submit"
-          value="Add Item"
+          value="Add Class"
         />
       </form>
     </div>
   );
 };
 
-export default AddItem;
+export default AddClass;
