@@ -3,11 +3,13 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { FiAlertCircle } from "react-icons/fi";
+import { BiDollarCircle } from "react-icons/bi";
+import { MdOutlinePeopleOutline } from "react-icons/md";
 
 const MyClasses = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  const { refetch, data: classes = [] } = useQuery({
+  const { data: classes = [] } = useQuery({
     queryFn: async () => {
       const res = await axiosSecure(`/instructor/classes/${user?.email}`);
       return res.data;
@@ -54,9 +56,19 @@ const MyClasses = () => {
             </div>
             <div className="card-body p-5">
               <h2 className="card-title">{item.name}</h2>
-              <div className="card-actions justify-start">
+              <div className="card-actions justify-between mt-auto">
+                <div className="flex gap-3">
+                  <p className="flex gap-1 items-center bg-gray-200 rounded-full pr-2">
+                    <MdOutlinePeopleOutline className="text-3xl bg-gray-500 p-1 rounded-full text-white" />{" "}
+                    <span className="text-xl font-semibold">{item?.seats}</span>
+                  </p>
+                  <p className="flex gap-1 items-center bg-gray-200 rounded-full pr-2">
+                    <BiDollarCircle className="text-3xl bg-gray-500 p-1 rounded-full text-white" />{" "}
+                    <span className="text-xl font-semibold">{item?.price}</span>
+                  </p>
+                </div>
                 {item?.feedback ? (
-                  <>
+                  <div>
                     <button
                       className="btn btn-outline btn-sm rounded-full"
                       onClick={() => openModal(`my_modal_${item._id}`)}
@@ -83,7 +95,7 @@ const MyClasses = () => {
                         <p className="py-4">{item.feedback}</p>
                       </form>
                     </dialog>
-                  </>
+                  </div>
                 ) : (
                   ""
                 )}
@@ -91,7 +103,7 @@ const MyClasses = () => {
 
               <div className="mt-auto">
                 <hr />
-                <div className="flex gap-5 mt-3">
+                <div className="flex flex-wrap gap-3 mt-3">
                   <button className="btn btn-accent btn-sm">
                     {" "}
                     <FaEdit />

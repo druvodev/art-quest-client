@@ -78,19 +78,28 @@ const Dashboard = () => {
         <>
           {/* Elements for Students */}
           <li>
-            <Link className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200">
+            <Link
+              to="/dashboard/selectedClasses"
+              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+            >
               <BiSelection className="text-2xl" />
               Selected Classes
             </Link>
           </li>
           <li>
-            <Link className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200">
+            <Link
+              to="/dashboard/enrolledClasses"
+              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+            >
               <BiSelectMultiple className="text-2xl" />
               Enrolled Classes
             </Link>
           </li>
           <li>
-            <Link className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200">
+            <Link
+              to="/dashboard/paymentHistory"
+              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+            >
               <BiHistory className="text-2xl" />
               Payment History
             </Link>
