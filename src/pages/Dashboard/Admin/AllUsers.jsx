@@ -2,6 +2,8 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useUsers from "../../../hooks/useUsers";
 import { BiSearch } from "react-icons/bi";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { FaChalkboardTeacher } from "react-icons/fa";
 
 const AllUsers = () => {
   const [users, refetch] = useUsers();
@@ -133,23 +135,26 @@ const AllUsers = () => {
                   {user.role === "student" ? (
                     <>
                       <button
-                        onClick={() => makeInstructor(user)}
-                        className="btn btn-info mr-3"
+                        onClick={() => makeAdmin(user)}
+                        className="btn btn-warning btn-sm hover:text-white font-semibold hover:underline "
                       >
-                        Instructor
+                        <MdOutlineAdminPanelSettings className="text-xl" />
+                        Admin
                       </button>
                       <button
-                        onClick={() => makeAdmin(user)}
-                        className="btn btn-warning "
+                        onClick={() => makeInstructor(user)}
+                        className="btn btn-info btn-sm ml-5 hover:text-white font-semibold hover:underline "
                       >
-                        Admin
+                        <FaChalkboardTeacher className="text-xl" />
+                        Instructor
                       </button>
                     </>
                   ) : user.role === "instructor" ? (
                     <button
                       onClick={() => makeAdmin(user)}
-                      className="btn btn-warning "
+                      className="btn btn-warning btn-sm hover:text-white font-semibold hover:underline "
                     >
+                      <MdOutlineAdminPanelSettings className="text-xl" />
                       Admin
                     </button>
                   ) : (
