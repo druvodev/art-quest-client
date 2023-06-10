@@ -1,11 +1,25 @@
 import { BiDollarCircle } from "react-icons/bi";
-import usePopularClasses from "../../../hooks/usePopularClasses";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlinePeopleOutline } from "react-icons/md";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const PopularClasses = () => {
-  const [popularClasses] = usePopularClasses();
-  console.log(popularClasses);
+  const [popularClasses, setPopularClasses] = useState([]);
+  const [axiosSecure] = useAxiosSecure();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axiosSecure("/popularClasses");
+        setPopularClasses(res.data);
+      } catch (error) {
+        console.error("Error fetching instructors:", error);
+      }
+    };
+
+    fetchData();
+  }, [axiosSecure]);
   return (
     <div>
       <h3 className="text-4xl text-center font-bold mt-12 mb-5 underline underline-offset-4">

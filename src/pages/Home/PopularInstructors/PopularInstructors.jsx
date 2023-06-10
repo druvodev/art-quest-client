@@ -1,25 +1,22 @@
 import { useEffect, useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const PopularInstructors = () => {
   const [popularInstructors, setPopularInstructors] = useState([]);
+  const [axiosSecure] = useAxiosSecure();
 
   useEffect(() => {
-    const fetchPopularInstructors = async () => {
+    const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:5000/popularInstructors");
-        if (res.ok) {
-          const data = await res.json();
-          setPopularInstructors(data);
-        } else {
-          console.error("Error fetching popular instructors:", res.status);
-        }
+        const res = await axiosSecure("/popularInstructors");
+        setPopularInstructors(res.data);
       } catch (error) {
-        console.error("Error fetching popular instructors:", error);
+        console.error("Error fetching instructors:", error);
       }
     };
 
-    fetchPopularInstructors();
-  }, []);
+    fetchData();
+  }, [axiosSecure]);
 
   return (
     <div>
@@ -28,21 +25,38 @@ const PopularInstructors = () => {
       </h3>
       <div className="grid sm:grid-cols-2 gap-5">
         {popularInstructors.map((instructor) => (
-          <div key={instructor?.email} className="hero bg-base-300 rounded-3xl">
-            <div className="hero-content flex-col lg:flex-row">
+          <div
+            key={instructor.email}
+            className="card card-side bg-base-100 shadow-xl"
+          >
+            <figure>
               <img
-                src="https://i.ibb.co/gggHL9V/instructor.png"
-                className=" w-60 rounded-lg "
+                className="w-60 bg-gray-400"
+                src="https://i.ibb.co/3smZYVQ/instructor.png"
+                alt="Instructor Photo"
               />
-              <div>
-                <h1 className="text-3xl font-bold">{instructor.name}</h1>
-                <p className="text-xl">
-                  Total Classes: <span>{instructor.totalClasses}</span>
+            </figure>
+            <div className="card-body">
+              <h2 className="text-3xl font-semibold">{instructor.name}</h2>
+              <hr />
+              <div className="w-fit">
+                <p className="font-semibold flex items-center justify-between gap-2">
+                  Total Classes:{" "}
+                  <span className="text-3xl font-bold flex items-center justify-center">
+                    {instructor.totalClasses}
+                  </span>
                 </p>
-                <p className="text-xl">
-                  Total Students: <span>{instructor.totalStudents}</span>
+                <p className="font-semibold flex items-center justify-between gap-2">
+                  Total Students:{" "}
+                  <span className="text-3xl font-bold flex items-center justify-center">
+                    {instructor.totalStudents}
+                  </span>
                 </p>
-                <button className="btn btn-primary mt-5">Details</button>
+              </div>
+              <div className="card-actions justify-end mt-auto">
+                <button className="bg-cyan-500 py-3 px-6 font-semibold text-white">
+                  View
+                </button>
               </div>
             </div>
           </div>

@@ -58,6 +58,7 @@ const SignUp = () => {
         const saveUser = {
           name: name,
           email: email,
+          image: profilePhoto,
         };
         axiosSecure.post("/users", saveUser).catch((error) => {
           console.log(error);
@@ -114,10 +115,12 @@ const SignUp = () => {
             className="block text-gray-700  font-bold mb-1"
             htmlFor="profilePhoto"
           >
-            Photo Url <small className="font-normal">(Optional)</small>
+            Photo Url
           </label>
           <input
-            {...register("profilePhoto")}
+            {...register("profilePhoto", {
+              required: "PhotoURL is required",
+            })}
             className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#26c6da]"
             type="text"
             id="profilePhoto"
