@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FiLogOut } from "react-icons/fi";
 
@@ -15,16 +15,52 @@ const Navbar = () => {
   const elements = (
     <>
       <li>
-        <Link to={"/"}>Home</Link>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive
+              ? "underline underline-offset-4 text-[#26c6da] font-bold"
+              : ""
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li tabIndex={0}>
-        <Link to={"/instructors"}>Instructors</Link>
+        <NavLink
+          to={"/instructors"}
+          className={({ isActive }) =>
+            isActive
+              ? "underline underline-offset-4 text-[#26c6da] font-bold"
+              : ""
+          }
+        >
+          Instructors
+        </NavLink>
       </li>
       <li>
-        <Link to={"/classes"}>Classes</Link>
+        <NavLink
+          to={"/classes"}
+          className={({ isActive }) =>
+            isActive
+              ? "underline underline-offset-4 text-[#26c6da] font-bold"
+              : ""
+          }
+        >
+          Classes
+        </NavLink>
       </li>
       <li>
-        <Link to={"/dashboard"}>Dashboard</Link>
+        <NavLink
+          to={"/dashboard"}
+          className={({ isActive }) =>
+            isActive
+              ? "underline underline-offset-4 text-[#26c6da] font-bold"
+              : ""
+          }
+        >
+          Dashboard
+        </NavLink>
       </li>
     </>
   );
@@ -50,19 +86,19 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-base"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-base z-50"
           >
             {elements}
           </ul>
         </div>
-        <Link to={"/"} className="btn btn-ghost normal-case text-xl">
+        <NavLink to={"/"} className="btn btn-ghost normal-case text-xl">
           <img
             className="h-full rounded-full hidden sm:block"
             src="https://i.ibb.co/FV3xBby/codepen.png"
             alt=""
           />
           Art<span className="primary-text">Quest</span>
-        </Link>
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-base">{elements}</ul>
@@ -89,21 +125,21 @@ const Navbar = () => {
             </span>
           </div>
         ) : !signIn ? (
-          <Link
+          <NavLink
             onClick={() => toggleSignIn()}
             to={"/signIn"}
             className="border border-[#26c6da] bg-[#26c6da] text-white font-semibold rounded-md px-4 py-2 text-lg"
           >
             Sign In
-          </Link>
+          </NavLink>
         ) : (
-          <Link
+          <NavLink
             onClick={() => toggleSignIn()}
             to={"/signUp"}
             className="border border-[#26c6da] hover:bg-[#26c6da] hover:text-white duration-200 font-semibold rounded-md px-4 py-2 text-lg"
           >
             Sign Up
-          </Link>
+          </NavLink>
         )}
       </div>
     </div>

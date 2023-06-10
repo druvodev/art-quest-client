@@ -3,6 +3,7 @@ import { BiSearch } from "react-icons/bi";
 import { CgMenuOreos } from "react-icons/cg";
 import useAdminClasses from "../../../hooks/useAdminClasses";
 import ClassCard from "./ClassCard";
+import { ScaleLoader } from "react-spinners";
 
 const ManageClasses = () => {
   const [classes, , isLoading] = useAdminClasses();
@@ -62,7 +63,9 @@ const ManageClasses = () => {
       )}
       <table className="overflow-x-auto table">
         {isLoading ? (
-          <p>Loading...</p>
+          <div className="flex justify-center items-center h-64">
+            <ScaleLoader color="#26c6da" />
+          </div>
         ) : (
           classes.map((item) => <ClassCard key={item._id} item={item} />)
         )}

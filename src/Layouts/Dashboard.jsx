@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import { FaUsersCog } from "react-icons/fa";
 import { MdOutlineAddToPhotos } from "react-icons/md";
@@ -30,22 +30,30 @@ const Dashboard = () => {
         <>
           {/* Elements for admin */}
           <li>
-            <Link
+            <NavLink
               to="/dashboard/classes"
-              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              className={({ isActive }) =>
+                isActive
+                  ? "active-link"
+                  : "px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              }
             >
               <SiGoogleclassroom className="text-2xl" />
               Manage Classes
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="/dashboard/users"
-              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              className={({ isActive }) =>
+                isActive
+                  ? "active-link"
+                  : "px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              }
             >
               <FaUsersCog className="text-2xl" />
               Manage Users
-            </Link>
+            </NavLink>
           </li>
         </>
       )}
@@ -54,22 +62,30 @@ const Dashboard = () => {
         <>
           {/* Elements for instructor */}
           <li>
-            <Link
+            <NavLink
               to="/dashboard/myclasses"
-              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              className={({ isActive }) =>
+                isActive
+                  ? "active-link"
+                  : "px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              }
             >
               <SiGoogleclassroom className="text-2xl" />
               My Classes
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="/dashboard/addclass"
-              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              className={({ isActive }) =>
+                isActive
+                  ? "active-link"
+                  : "px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              }
             >
               <MdOutlineAddToPhotos className="text-2xl" />
               Add a Class
-            </Link>
+            </NavLink>
           </li>
         </>
       )}
@@ -78,31 +94,43 @@ const Dashboard = () => {
         <>
           {/* Elements for Students */}
           <li>
-            <Link
+            <NavLink
               to="/dashboard/selectedClasses"
-              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              className={({ isActive }) =>
+                isActive
+                  ? "active-link"
+                  : "px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              }
             >
               <BiSelection className="text-2xl" />
               Selected Classes
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="/dashboard/enrolledClasses"
-              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              className={({ isActive }) =>
+                isActive
+                  ? "active-link"
+                  : "px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              }
             >
               <BiSelectMultiple className="text-2xl" />
               Enrolled Classes
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="/dashboard/paymentHistory"
-              className="px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              className={({ isActive }) =>
+                isActive
+                  ? "active-link"
+                  : "px-9 py-3 flex items-center gap-2 hover:bg-[#26c6da] hover:text-white rounded-lg hover:shadow-md hover:shadow-[#cdf9ffe9] duration-200"
+              }
             >
               <BiHistory className="text-2xl" />
               Payment History
-            </Link>
+            </NavLink>
           </li>
         </>
       )}
@@ -112,15 +140,15 @@ const Dashboard = () => {
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="max-w-[1520px] min-h-[calc(100vh-100px)] mx-auto p-10 rounded-3xl grid gap-5 grid-cols-5 bg-white shadow-sm relative">
         <div className="col-span-1">
-          <div className="text-lg font-medium text-neutral-600">
-            <Link to={"/"} className="btn btn-ghost normal-case text-xl">
+          <div className="text-md font-medium text-neutral-600">
+            <NavLink to={"/"} className="btn btn-ghost normal-case text-xl">
               <img
                 className="h-full rounded-full hidden sm:block"
                 src="https://i.ibb.co/FV3xBby/codepen.png"
                 alt=""
               />
               Art<span className="primary-text">Quest</span>
-            </Link>
+            </NavLink>
             <div>
               <p className="mt-8 text-neutral-500">
                 {isAdmin
@@ -129,7 +157,7 @@ const Dashboard = () => {
                   ? "Instructor panel"
                   : isStudent && "Student panel"}
               </p>
-              <ul className="flex flex-col mt-5">{elements}</ul>
+              <ul className="flex gap-1 flex-col mt-5">{elements}</ul>
             </div>
           </div>
         </div>

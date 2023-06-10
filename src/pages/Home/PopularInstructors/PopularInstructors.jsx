@@ -27,11 +27,11 @@ const PopularInstructors = () => {
         {popularInstructors.map((instructor) => (
           <div
             key={instructor.email}
-            className="card card-side bg-base-100 shadow-xl"
+            className="card lg:card-side bg-base-100 shadow-xl"
           >
             <figure>
               <img
-                className="w-60 bg-gray-400"
+                className="w-full bg-gray-400"
                 src="https://i.ibb.co/3smZYVQ/instructor.png"
                 alt="Instructor Photo"
               />

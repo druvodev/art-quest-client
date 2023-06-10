@@ -8,3 +8,6 @@
 .primary-bg {
   background-color: #26c6da;
 }
+.active-link {
+  @apply pl-12 py-3 flex items-center gap-2 bg-[#26c6da] rounded-lg duration-200 hover:shadow-md text-white;
+}
