@@ -18,6 +18,8 @@ import Payment from "../pages/Dashboard/Student/Payment/Payment";
 import AdminRoute from "./AdminRoute";
 import StudentRoute from "./StudentRoute";
 import InstructorRoute from "./InstructorRoute";
+import InstructorClasses from "../pages/Instructors/InstructorClasses";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors></Instructors>,
+      },
+      {
+        path: "/instructor/:email",
+        element: (
+          <PrivateRoute>
+            <InstructorClasses></InstructorClasses>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/classes",

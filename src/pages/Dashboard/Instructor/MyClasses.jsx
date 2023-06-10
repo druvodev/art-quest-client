@@ -30,8 +30,8 @@ const MyClasses = () => {
         Total Classes: {classes.length}
       </h3>
       {isLoading ? (
-        <div className="flex justify-center items-center h-64">
-          <ScaleLoader color="#26c6da" />
+        <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center">
+          <ScaleLoader color="#72deed" />
         </div>
       ) : (
         <div className="grid sm:grid-cols-3 gap-8">

@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
 import { FiLogOut } from "react-icons/fi";
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
   const location = useLocation();
   const [signIn, setSignIn] = useState(location.pathname === "/signIn");
 
@@ -50,18 +50,20 @@ const Navbar = () => {
           Classes
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to={"/dashboard"}
-          className={({ isActive }) =>
-            isActive
-              ? "underline underline-offset-4 text-[#26c6da] font-bold"
-              : ""
-          }
-        >
-          Dashboard
-        </NavLink>
-      </li>
+      {user?.email && (
+        <li>
+          <NavLink
+            to={"/dashboard"}
+            className={({ isActive }) =>
+              isActive
+                ? "underline underline-offset-4 text-[#26c6da] font-bold"
+                : ""
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (

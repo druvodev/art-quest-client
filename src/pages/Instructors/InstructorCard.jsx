@@ -1,7 +1,13 @@
 import { SiMinutemailer } from "react-icons/si";
+import { useNavigate } from "react-router-dom";
 
 const InstructorCard = ({ instructor }) => {
   const emailLink = `mailto:${instructor.email}`;
+  const navigate = useNavigate();
+
+  const handleClasses = (email) => {
+    navigate(`/instructor/${email}`);
+  };
 
   return (
     <div className="card card-compact w-full bg-base-100 shadow-xl">
@@ -40,7 +46,13 @@ const InstructorCard = ({ instructor }) => {
         </p>
 
         <div className="card-actions justify-end">
-          <button className="btn btn-info text-white">See Classes</button>
+          <button
+            onClick={() => handleClasses(instructor?.email)}
+            className="btn btn-info text-white"
+            disabled={instructor.totalClasses <= 0}
+          >
+            See Classes
+          </button>
         </div>
       </div>
     </div>

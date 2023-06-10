@@ -31,7 +31,7 @@ const PopularInstructors = () => {
           >
             <figure>
               <img
-                className="w-full bg-gray-400"
+                className="w-80 bg-gray-400"
                 src="https://i.ibb.co/3smZYVQ/instructor.png"
                 alt="Instructor Photo"
               />
