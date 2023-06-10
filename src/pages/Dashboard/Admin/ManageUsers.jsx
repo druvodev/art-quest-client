@@ -5,7 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { FaChalkboardTeacher } from "react-icons/fa";
 
-const AllUsers = () => {
+const ManageUsers = () => {
   const [users, refetch] = useUsers();
   const [axiosSecure] = useAxiosSecure();
   console.log(users);
@@ -170,4 +170,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default ManageUsers;

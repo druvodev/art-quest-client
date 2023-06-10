@@ -5,7 +5,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Home from "../pages/Home/Home/Home";
 import Dashboard from "../Layouts/Dashboard";
 
-import AllUsers from "../pages/Dashboard/Admin/AllUsers";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import AddClass from "../pages/Dashboard/Instructor/AddClass";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses";
 import ManageClasses from "../pages/Dashboard/Admin/ManageClasses";
@@ -15,6 +15,9 @@ import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import Payment from "../pages/Dashboard/Student/Payment/Payment";
+import AdminRoute from "./AdminRoute";
+import StudentRoute from "./StudentRoute";
+import InstructorRoute from "./InstructorRoute";
 
 export const router = createBrowserRouter([
   {
@@ -49,35 +52,68 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "users",
-        element: <AllUsers></AllUsers>,
-      },
-      {
-        path: "addclass",
-        element: <AddClass></AddClass>,
-      },
-      {
-        path: "myclasses",
-        element: <MyClasses></MyClasses>,
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
       {
         path: "classes",
-        element: <ManageClasses></ManageClasses>,
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
       },
       {
+        path: "addclass",
+        element: (
+          <InstructorRoute>
+            <AddClass></AddClass>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "myclasses",
+        element: (
+          <InstructorRoute>
+            <MyClasses></MyClasses>
+          </InstructorRoute>
+        ),
+      },
+
+      {
         path: "selectedClasses",
-        element: <SelectedClass></SelectedClass>,
+        element: (
+          <StudentRoute>
+            <SelectedClass></SelectedClass>
+          </StudentRoute>
+        ),
       },
       {
         path: "enrolledClasses",
-        element: <EnrolledClasses></EnrolledClasses>,
+        element: (
+          <StudentRoute>
+            <EnrolledClasses></EnrolledClasses>
+          </StudentRoute>
+        ),
       },
       {
         path: "paymentHistory",
-        element: <PaymentHistory></PaymentHistory>,
+        element: (
+          <StudentRoute>
+            <PaymentHistory></PaymentHistory>
+          </StudentRoute>
+        ),
       },
       {
         path: "payment/:classId",
-        element: <Payment></Payment>,
+        element: (
+          <StudentRoute>
+            <Payment></Payment>
+          </StudentRoute>
+        ),
       },
     ],
   },
