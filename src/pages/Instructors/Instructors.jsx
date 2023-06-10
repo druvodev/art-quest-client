@@ -20,7 +20,7 @@ const Instructors = () => {
   }, [axiosSecure]);
 
   return (
-    <div className="grid sm:grid-cols-3 gap-6 mt-12 bg-white">
+    <div className="grid sm:grid-cols-3 gap-6 pt-12">
       {instructors.map((instructor) => (
         <InstructorCard key={instructor._id} instructor={instructor} />
       ))}
