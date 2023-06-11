@@ -20,7 +20,7 @@ const PopularInstructors = () => {
   }, []);
   console.log(popularInstructors);
   return (
-    <div>
+    <section>
       <h3 className="text-3xl text-center font-bold mt-12 mb-5 underline underline-offset-4">
         Popular Instructor
       </h3>
@@ -63,7 +63,7 @@ const PopularInstructors = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

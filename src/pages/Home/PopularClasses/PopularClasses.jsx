@@ -21,7 +21,7 @@ const PopularClasses = () => {
     fetchData();
   }, [axiosSecure]);
   return (
-    <div>
+    <section>
       <h3 className="text-3xl text-center font-bold mt-12 mb-5 underline underline-offset-4">
         Popular Classes
       </h3>
@@ -79,7 +79,7 @@ const PopularClasses = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
