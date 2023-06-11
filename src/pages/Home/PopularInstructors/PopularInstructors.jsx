@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
@@ -16,22 +17,22 @@ const PopularInstructors = () => {
     };
 
     fetchData();
-  }, [axiosSecure]);
-
+  }, []);
+  console.log(popularInstructors);
   return (
     <div>
-      <h3 className="text-4xl text-center font-bold mt-12 mb-5 underline underline-offset-4">
+      <h3 className="text-3xl text-center font-bold mt-12 mb-5 underline underline-offset-4">
         Popular Instructor
       </h3>
-      <div className="grid sm:grid-cols-2 gap-5">
+      <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
         {popularInstructors.map((instructor) => (
           <div
             key={instructor.email}
             className="card lg:card-side bg-base-100 shadow-xl"
           >
-            <figure>
+            <figure className="bg-gray-400">
               <img
-                className="w-80 bg-gray-400"
+                className="w-48"
                 src="https://i.ibb.co/3smZYVQ/instructor.png"
                 alt="Instructor Photo"
               />

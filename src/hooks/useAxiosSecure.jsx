@@ -10,7 +10,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
 
   const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://art-quest-server-side.vercel.app",
   });
 
   useEffect(() => {

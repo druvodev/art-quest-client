@@ -22,10 +22,10 @@ const PopularClasses = () => {
   }, [axiosSecure]);
   return (
     <div>
-      <h3 className="text-4xl text-center font-bold mt-12 mb-5 underline underline-offset-4">
+      <h3 className="text-3xl text-center font-bold mt-12 mb-5 underline underline-offset-4">
         Popular Classes
       </h3>
-      <div className="grid sm:grid-cols-3 gap-5">
+      <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
         {popularClasses.map((item) => (
           <div key={item._id} className="card w-full bg-base-100 shadow-xl">
             <div
@@ -40,7 +40,7 @@ const PopularClasses = () => {
                   </span>
                 </p>
               ) : (
-                <div className="bg-black w-full h-full rounded-t-2xl bg-opacity-60 text-4xl sm:text-5xl font-bold text-gray-300 flex items-center justify-center">
+                <div className="bg-black w-full h-full rounded-t-2xl bg-opacity-60 text-3xl sm:text-5xl font-bold text-gray-300 flex items-center justify-center">
                   Sold Out
                 </div>
               )}

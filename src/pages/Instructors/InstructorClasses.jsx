@@ -29,7 +29,7 @@ const InstructorClasses = () => {
   }, [email]);
 
   return (
-    <div>
+    <div className="px-5 sm:px-10">
       {loading ? (
         <div className="flex justify-center items-center h-64">
           <ScaleLoader color="#26c6da" />
@@ -50,7 +50,7 @@ const InstructorClasses = () => {
                     </span>
                   </p>
                 ) : (
-                  <div className="bg-black w-full h-full rounded-t-2xl bg-opacity-60 text-4xl sm:text-5xl font-bold text-gray-300 flex items-center justify-center">
+                  <div className="bg-black w-full h-full rounded-t-2xl bg-opacity-60 text-3xl sm:text-5xl font-bold text-gray-300 flex items-center justify-center">
                     Sold Out
                   </div>
                 )}

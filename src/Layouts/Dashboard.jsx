@@ -142,12 +142,16 @@ const Dashboard = () => {
         <div className="col-span-1">
           <div className="text-md font-medium text-neutral-600">
             <NavLink to={"/"} className="btn btn-ghost normal-case text-xl">
-              <img
-                className="h-full rounded-full hidden sm:block"
-                src="https://i.ibb.co/FV3xBby/codepen.png"
-                alt=""
-              />
-              Art<span className="primary-text">Quest</span>
+              <div className="flex gap-2 items-center">
+                <img
+                  className="h-11 rounded-full hidden sm:block"
+                  src="https://i.ibb.co/FV3xBby/codepen.png"
+                  alt=""
+                />
+                <span>
+                  Art<span className="primary-text">Quest</span>
+                </span>
+              </div>
             </NavLink>
             <div>
               <p className="mt-8 text-neutral-500">

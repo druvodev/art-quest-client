@@ -130,10 +130,10 @@ const ManageUsers = () => {
                     {user.email}
                   </span>
                 </td>
-                <td> {user?.role ? user.role : "student"}</td>
+                <td className="uppercase font-semibold"> {user?.role}</td>
                 <td>
                   {user.role === "student" ? (
-                    <>
+                    <div className="flex gap-5">
                       <button
                         onClick={() => makeAdmin(user)}
                         className="btn btn-warning btn-sm hover:text-white font-semibold hover:underline "
@@ -143,12 +143,12 @@ const ManageUsers = () => {
                       </button>
                       <button
                         onClick={() => makeInstructor(user)}
-                        className="btn btn-info btn-sm ml-5 hover:text-white font-semibold hover:underline "
+                        className="btn btn-info btn-sm hover:text-white font-semibold hover:underline "
                       >
                         <FaChalkboardTeacher className="text-xl" />
                         Instructor
                       </button>
-                    </>
+                    </div>
                   ) : user.role === "instructor" ? (
                     <button
                       onClick={() => makeAdmin(user)}

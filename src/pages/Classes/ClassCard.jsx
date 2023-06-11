@@ -39,7 +39,7 @@ const ClassCard = ({ item }) => {
             </span>
           </p>
         ) : (
-          <div className="bg-black w-full h-full rounded-t-2xl bg-opacity-60 text-4xl sm:text-5xl font-bold text-gray-300 flex items-center justify-center">
+          <div className="bg-black w-full h-full rounded-t-2xl bg-opacity-60 text-3xl sm:text-5xl font-bold text-gray-300 flex items-center justify-center">
             Sold Out
           </div>
         )}

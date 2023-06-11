@@ -20,11 +20,13 @@ import StudentRoute from "./StudentRoute";
 import InstructorRoute from "./InstructorRoute";
 import InstructorClasses from "../pages/Instructors/InstructorClasses";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

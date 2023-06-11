@@ -13,7 +13,7 @@ const Footer = () => {
                 alt=""
               />
               <p className="text-3xl font-bold text-white">
-                Art<span className="primary-text">Quest</span>
+                Art<span className="primary-text ml-2">Quest</span>
               </p>
             </Link>
             <div className="mx-auto max-w-screen-xl mt-10">

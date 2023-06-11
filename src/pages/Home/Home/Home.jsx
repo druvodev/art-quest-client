@@ -4,11 +4,14 @@ import TopSlider from "../TopSlider/TopSlider";
 
 const Home = () => {
   return (
-    <div>
+    <>
+      {" "}
       <TopSlider />
-      <PopularClasses />
-      <PopularInstructors />
-    </div>
+      <div className="px-5 sm:px-10">
+        <PopularClasses />
+        <PopularInstructors />
+      </div>
+    </>
   );
 };
 

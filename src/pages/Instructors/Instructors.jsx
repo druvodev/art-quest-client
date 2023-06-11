@@ -20,8 +20,8 @@ const Instructors = () => {
   }, [axiosSecure]);
 
   return (
-    <div>
-      <h3 className="text-4xl text-center font-bold mb-5 underline underline-offset-4">
+    <div className="px-5 sm:px-10 pt-4 sm:pt-10">
+      <h3 className="text-3xl text-center font-bold mb-5 underline underline-offset-4">
         Instructors
       </h3>
       <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-6 pb-10">

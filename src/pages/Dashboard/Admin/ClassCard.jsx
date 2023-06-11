@@ -88,7 +88,7 @@ const ClassCard = ({ item }) => {
                     : item.status === "denied"
                     ? "badge-error"
                     : ""
-                } text-white text-lg px-3 py-3 uppercase`}
+                } text-white text-lg uppercase`}
               >
                 {item.status}
               </span>
@@ -101,37 +101,37 @@ const ClassCard = ({ item }) => {
         {item?.status === "approved" ? (
           <button
             onClick={openModal}
-            className="btn btn-error hover:text-white font-semibold hover:underline underline-offset-2"
+            className="btn btn-sm btn-error hover:text-white font-semibold hover:underline underline-offset-2"
           >
             Deny
           </button>
         ) : item?.status === "pending" ? (
-          <>
+          <div className="flex gap-5">
             <button
               onClick={approveClass}
-              className="px-5 py-2 btn btn-success border hover:text-white font-semibold hover:underline underline-offset-2 duration-200 rounded-md shadow-md"
+              className="px-5 py-2 btn btn-sm btn-success border hover:text-white font-semibold hover:underline underline-offset-2 duration-200 rounded-md shadow-md"
             >
               Approve
             </button>
             <button
               onClick={openModal}
-              className="btn btn-error hover:text-white font-semibold hover:underline underline-offset-2 ml-5"
+              className="btn btn-sm btn-error hover:text-white font-semibold hover:underline underline-offset-2"
             >
               Deny
             </button>
-          </>
+          </div>
         ) : (
-          <>
+          <div className="flex gap-5">
             <button
               onClick={approveClass}
-              className="px-5 py-2 btn btn-success border hover:text-white font-semibold hover:underline underline-offset-2 duration-200 rounded-md shadow-md"
+              className="px-5 py-2 btn btn-sm btn-success border hover:text-white font-semibold hover:underline underline-offset-2 duration-200 rounded-md shadow-md"
             >
               Approve
             </button>{" "}
-            <button className="btn bg-rose-500 text-white hover:text-rose-500 hover:bg-rose-200 ml-5">
+            <button className="btn btn-sm bg-rose-500 text-white hover:text-rose-500 hover:bg-rose-200">
               <FaTrashAlt />
             </button>
-          </>
+          </div>
         )}
       </td>
       {/* Modal */}
