@@ -1,3 +1,4 @@
+import HeaderName from "../../../components/HeaderName";
 import TestimonialCard from "./TestimonialCard";
 import Marquee from "react-fast-marquee";
 
@@ -47,11 +48,9 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="bg-gray-100 py-12">
-      <h3 className="text-3xl text-center font-bold mt-12 mb-5 underline underline-offset-4">
-        Testimonials
-      </h3>
-      <div className="mt-8">
+    <section>
+      <HeaderName name={"Testimonials"} />
+      <div className="py-8">
         <Marquee pauseOnHover={true} speed={30}>
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />

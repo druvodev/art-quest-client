@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import HeaderName from "../../../components/HeaderName";
 
 const PopularInstructors = () => {
   const [popularInstructors, setPopularInstructors] = useState([]);
@@ -21,9 +22,7 @@ const PopularInstructors = () => {
   console.log(popularInstructors);
   return (
     <section>
-      <h3 className="text-3xl text-center font-bold mt-12 mb-5 underline underline-offset-4">
-        Popular Instructor
-      </h3>
+      <HeaderName name={"Popular Instructor"} />
       <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
         {popularInstructors.map((instructor) => (
           <div

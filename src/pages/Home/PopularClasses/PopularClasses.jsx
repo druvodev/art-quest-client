@@ -3,6 +3,7 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlinePeopleOutline } from "react-icons/md";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import HeaderName from "../../../components/HeaderName";
 
 const PopularClasses = () => {
   const [popularClasses, setPopularClasses] = useState([]);
@@ -22,9 +23,7 @@ const PopularClasses = () => {
   }, [axiosSecure]);
   return (
     <section>
-      <h3 className="text-3xl text-center font-bold mt-12 mb-5 underline underline-offset-4">
-        Popular Classes
-      </h3>
+      <HeaderName name={"Popular Classes"} />
       <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
         {popularClasses.map((item) => (
           <div key={item._id} className="card w-full bg-base-100 shadow-xl">

@@ -1,12 +1,15 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import useAuth from "../../hooks/useAuth";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ThemeContext } from "../../providers/ThemeProvider";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const location = useLocation();
   const [signIn, setSignIn] = useState(location.pathname === "/signIn");
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   const toggleSignIn = () => {
     setSignIn(!signIn);
@@ -67,7 +70,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar h-[80px] border-b-2">
+    <div className={`navbar h-[80px] border-b-2 ${isDarkMode && "text-white"}`}>
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -88,7 +91,9 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-base z-50"
+            className={`menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-base z-50 ${
+              isDarkMode && "bg-slate-900"
+            }`}
           >
             {elements}
           </ul>
@@ -106,6 +111,16 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 text-base">{elements}</ul>
       </div>
       <div className="navbar-end  ">
+        <button
+          onClick={toggleTheme}
+          className=" px-4 py-2 rounded-md text-2xl mr-3"
+        >
+          {isDarkMode ? (
+            <BsSunFill className="text-amber-300" />
+          ) : (
+            <BsMoonFill className="text-slate-900" />
+          )}
+        </button>
         {user ? (
           <div className="flex gap-3">
             <div className="btn btn-ghost btn-circle avatar">
