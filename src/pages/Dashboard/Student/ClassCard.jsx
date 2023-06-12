@@ -4,11 +4,14 @@ import useSelectedClasses from "../../../hooks/useSelectedClasses";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useEnrolledClasses from "../../../hooks/useEnrolledClasses";
+import Swal from "sweetalert2";
 
 const ClassCard = ({ item }) => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const [, refetch] = useSelectedClasses();
+  const [enrolledClasses] = useEnrolledClasses();
   const navigate = useNavigate();
 
   const removeClass = async (classId) => {
@@ -19,12 +22,25 @@ const ClassCard = ({ item }) => {
       refetch();
     } catch (error) {
       console.error("Error removing class:", error);
-      // Handle error (e.g., show an error message)
     }
   };
 
   const handlePayment = (id) => {
-    navigate(`/dashboard/payment/${id}`);
+    const existingEnrolled = enrolledClasses.find(
+      (enrolledClass) => enrolledClass._id === id
+    );
+    if (!existingEnrolled || !existingEnrolled) {
+      return navigate(`/dashboard/payment/${id}`);
+    }
+    Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "You have already enrolled!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    // Redirect to /dashboard/selectedClasses
+    navigate("/dashboard/selectedClasses");
   };
 
   return (
@@ -32,7 +48,7 @@ const ClassCard = ({ item }) => {
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
-            <div className="rounded-xl w-48 h-48">
+            <div className="rounded-xl w-36 h-36">
               <img src={item.image} alt="photo" />
             </div>
           </div>

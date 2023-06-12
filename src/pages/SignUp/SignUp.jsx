@@ -64,7 +64,7 @@ const SignUp = () => {
           console.log(error);
         });
 
-        navigate("/signin");
+        navigate("/");
         console.log(result.user);
         setLoading(false);
       })

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { BiDollarCircle } from "react-icons/bi";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlinePeopleOutline } from "react-icons/md";
@@ -20,7 +21,7 @@ const PopularClasses = () => {
     };
 
     fetchData();
-  }, [axiosSecure]);
+  }, []);
   return (
     <section>
       <HeaderName name={"Popular Classes"} />
@@ -56,8 +57,8 @@ const PopularClasses = () => {
                     <BiDollarCircle className="text-3xl bg-gray-500 p-1 rounded-full text-white" />{" "}
                     <span className="text-xl font-semibold">{item?.price}</span>
                   </p>
-                  <p className="flex gap-1 items-center bg-sky-200 rounded-full pr-2">
-                    <FaChalkboardTeacher className="text-3xl bg-sky-500 p-1 rounded-full text-white" />{" "}
+                  <p className="flex gap-1 items-center bg-gray-200 rounded-full pr-2">
+                    <FaChalkboardTeacher className="text-3xl bg-gray-500 p-1 rounded-full text-white" />{" "}
                     <span className="text-xl font-semibold">
                       {item?.instructor}
                     </span>

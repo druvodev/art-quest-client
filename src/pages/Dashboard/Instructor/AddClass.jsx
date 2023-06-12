@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import { useState } from "react";
 
 const img_hosting_token = import.meta.env.VITE_image_upload_token;
 
@@ -9,9 +10,12 @@ const AddClass = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
+  const [loading, setLoading] = useState(false);
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
   const onSubmit = (data) => {
+    setLoading(true); // Set loading state to true
+
     const formData = new FormData();
     formData.append("image", data.image[0]);
 
@@ -46,6 +50,7 @@ const AddClass = () => {
                 timer: 1500,
               });
             }
+            setLoading(false); // Set loading state to false after API request is completed
           });
         }
       });
@@ -125,7 +130,8 @@ const AddClass = () => {
         <input
           className="btn btn-warning mt-8"
           type="submit"
-          value="Add Class"
+          value={loading ? "Adding..." : "Add Class"}
+          disabled={loading} // Disable the button while loading
         />
       </form>
     </div>

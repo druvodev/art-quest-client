@@ -12,7 +12,6 @@ const Dashboard = () => {
   const [isAdmin, isAdminLoading] = useAdmin();
   const [isInstructor, isInstructorLoading] = useInstructor();
   const [isStudent, isStudentLoading] = useStudent();
-  console.log("admin:", isAdmin, "ins:", isInstructor, "st:", isStudent);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -149,7 +148,7 @@ const Dashboard = () => {
                   alt=""
                 />
                 <span>
-                  Art<span className="primary-text">Quest</span>
+                  Art<span className="primary-text ml-1">Quest</span>
                 </span>
               </div>
             </NavLink>

@@ -11,17 +11,14 @@ const InstructorCard = ({ instructor }) => {
 
   return (
     <div className="card card-compact w-full bg-base-100 shadow-xl">
-      <figure>
-        <img
-          className="w-full"
-          src={
-            instructor?.image
-              ? instructor.image
-              : "https://i.ibb.co/3smZYVQ/instructor.png"
-          }
-          alt="Shoes"
-        />
-      </figure>
+      <figure
+        className="bg-cover bg-center h-60"
+        style={{
+          backgroundImage: `url(${
+            instructor?.image || "https://i.ibb.co/3smZYVQ/instructor.png"
+          })`,
+        }}
+      ></figure>
       <hr />
       <div className="card-body">
         <h2 className="card-title">{instructor.name}</h2>

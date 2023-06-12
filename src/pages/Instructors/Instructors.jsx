@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import InstructorCard from "./InstructorCard";
@@ -18,10 +19,10 @@ const Instructors = () => {
     };
 
     fetchData();
-  }, [axiosSecure]);
+  }, []);
 
   return (
-    <div className="px-5 sm:px-10 pt-4 sm:pt-10">
+    <div className="px-5 sm:px-10">
       <HeaderName name={"Instructors"} />
       <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-6 pb-10">
         {instructors.map((instructor) => (

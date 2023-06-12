@@ -1,36 +1,13 @@
-import { useEffect, useState } from "react";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import useAuth from "../../../hooks/useAuth";
 import { ScaleLoader } from "react-spinners";
 import { MdWarning } from "react-icons/md";
+import useEnrolledClasses from "../../../hooks/useEnrolledClasses";
 
 const EnrolledClasses = () => {
-  const { user } = useAuth();
-  const [axiosSecure] = useAxiosSecure();
-  const [enrolledClasses, setEnrolledClasses] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchEnrolledClasses = async () => {
-      try {
-        const response = await axiosSecure.get(
-          `/enrolledClasses/${user?.email}`
-        );
-        const data = response.data;
-        setEnrolledClasses(data);
-      } catch (error) {
-        console.error("Error fetching enrolled classes:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEnrolledClasses();
-  }, [axiosSecure, user]);
+  const [enrolledClasses, isLoading] = useEnrolledClasses();
 
   return (
     <div>
-      {loading ? (
+      {isLoading ? (
         <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center">
           <ScaleLoader color="#72deed" />
         </div>
@@ -47,7 +24,7 @@ const EnrolledClasses = () => {
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
-                      <div className="rounded-xl w-48 h-48">
+                      <div className="rounded-xl w-36 h-36">
                         <img src={item.image} alt="photo" />
                       </div>
                     </div>
@@ -60,10 +37,7 @@ const EnrolledClasses = () => {
                           <span className="font-semibold">Price:</span> $
                           {item.price}
                         </p>
-                        <p className="text-base">
-                          <span className="font-semibold">Seats:</span>{" "}
-                          {item.seats}
-                        </p>
+
                         <hr />
                         <p>
                           <span className="font-semibold">Instructor:</span>{" "}
@@ -72,6 +46,10 @@ const EnrolledClasses = () => {
                         <p>
                           <span className="font-semibold">Enrolled Time:</span>{" "}
                           {new Date(item.enrolledTime * 1000).toLocaleString()}
+                        </p>
+                        <p>
+                          <span className="font-semibold">Serial:</span>{" "}
+                          {item.enrolled}
                         </p>
                       </div>
                     </div>

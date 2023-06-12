@@ -29,13 +29,14 @@ const PopularInstructors = () => {
             key={instructor.email}
             className="card lg:card-side bg-base-100 shadow-xl"
           >
-            <figure className="bg-gray-400">
-              <img
-                className="w-48"
-                src="https://i.ibb.co/3smZYVQ/instructor.png"
-                alt="Instructor Photo"
-              />
-            </figure>
+            <figure
+              className="bg-cover bg-center w-52"
+              style={{
+                backgroundImage: `url(${
+                  instructor?.image || "https://i.ibb.co/3smZYVQ/instructor.png"
+                })`,
+              }}
+            ></figure>
             <div className="card-body">
               <h2 className="text-3xl font-semibold">{instructor.name}</h2>
               <hr />

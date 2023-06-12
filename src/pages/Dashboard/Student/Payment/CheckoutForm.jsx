@@ -1,8 +1,9 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const CheckoutForm = () => {
   const { user } = useAuth();
@@ -10,10 +11,9 @@ const CheckoutForm = () => {
   const elements = useElements();
   const [cardError, setCardError] = useState("");
   const [processing, setProcessing] = useState(false);
-  const [transactionId, setTransactionId] = useState("");
   const [axiosSecure] = useAxiosSecure();
   const { classId } = useParams();
-  console.log(classId);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -57,8 +57,16 @@ const CheckoutForm = () => {
       console.log("[error]", error);
     } else if (paymentIntent.status === "succeeded") {
       setCardError("");
-      setTransactionId(paymentIntent?.id);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Successfully Enrolled",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       console.log("[PaymentIntent]", paymentIntent);
+      // Redirect to /dashboard/selectedClasses
+      navigate("/dashboard/selectedClasses");
 
       // Student payment information
       const paymentInfo = {
@@ -85,7 +93,10 @@ const CheckoutForm = () => {
 
   return (
     <>
-      <form className="max-w-lg" onSubmit={handleSubmit}>
+      <form
+        className="max-w-lg border p-10 rounded-3xl shadow-xl"
+        onSubmit={handleSubmit}
+      >
         <CardElement
           options={{
             style: {
@@ -110,10 +121,9 @@ const CheckoutForm = () => {
           {processing ? "Processing..." : "Pay"}
         </button>
       </form>
-      {cardError && <p className="text-rose-500">{cardError}</p>}
-      {transactionId && (
-        <p className="text-green-500">
-          Transition complete with transaction ID: {transactionId}
+      {cardError && (
+        <p className="bg-rose-50 px-10 py-3 rounded-lg text-rose-500 text-center mt-10 w-fit mx-auto">
+          {cardError}
         </p>
       )}
     </>

@@ -11,7 +11,7 @@ const TopSlider = () => {
             <p className="text-slate-300 text-xl sm:text-2xl mt-5 border-b-4 border-[#26c6da] w-fit mx-auto ">
               Discover the world through the lens
             </p>
-            <button className="mt-10 px-10 py-2 bg-sky-900 bg-opacity-60 hover:bg-sky-500 border border-sky-500 text-white text-2xl shadow shadow-sky-500 font-medium rounded-full">
+            <button className="mt-10 px-10 py-2 bg-sky-900 bg-opacity-60 hover:bg-gray-500 border border-sky-500 text-white text-2xl shadow shadow-sky-500 font-medium rounded-full">
               Explore Courses
             </button>
           </div>
@@ -37,7 +37,7 @@ const TopSlider = () => {
             </p>
             <button
               className="mt-10 px-10 py-2 bg-sky-900 bg-opacity-60
-            hover:bg-sky-500 border border-sky-500 text-white text-2xl shadow shadow-sky-500 font-medium rounded-full"
+            hover:bg-gray-500 border border-sky-500 text-white text-2xl shadow shadow-sky-500 font-medium rounded-full"
             >
               Enroll Now
             </button>
@@ -62,7 +62,7 @@ const TopSlider = () => {
             <p className="text-slate-300 text-xl sm:text-2xl mt-5 border-b-4 border-[#26c6da] w-fit mx-auto ">
               Take your skills to the next level
             </p>
-            <button className="mt-10 px-10 py-2 bg-sky-900 bg-opacity-60 hover:bg-sky-500 border border-sky-500 text-white text-2xl shadow shadow-sky-500 font-medium rounded-full">
+            <button className="mt-10 px-10 py-2 bg-sky-900 bg-opacity-60 hover:bg-gray-500 border border-sky-500 text-white text-2xl shadow shadow-sky-500 font-medium rounded-full">
               Join Workshops
             </button>
           </div>
