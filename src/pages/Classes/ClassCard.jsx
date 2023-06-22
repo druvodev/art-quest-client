@@ -5,11 +5,13 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useEnrolledClasses from "../../hooks/useEnrolledClasses";
+import { useNavigate } from "react-router-dom";
 
 const ClassCard = ({ item }) => {
   const { user } = useAuth();
   const [enrolledClasses] = useEnrolledClasses();
   const [axiosSecure] = useAxiosSecure();
+  const navigate = useNavigate();
 
   const existingEnrolled = enrolledClasses.find(
     (enrolledClass) => enrolledClass._id === item._id
@@ -18,28 +20,34 @@ const ClassCard = ({ item }) => {
   console.log();
 
   const handleSelectedClass = async (classId) => {
-    const email = user.email;
-    try {
-      const res = await axiosSecure.patch(`/classSelect/${classId}`, { email });
-      if (res.data?.modifiedCount === 0) {
-        Swal.fire({
-          position: "top-end",
-          icon: "error",
-          title: "You have already added!",
-          showConfirmButton: false,
-          timer: 1500,
+    const email = user?.email;
+    if (email) {
+      try {
+        const res = await axiosSecure.patch(`/classSelect/${classId}`, {
+          email,
         });
-      } else if (res.data?.modifiedCount === 1) {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "You have successfully selected",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        if (res.data?.modifiedCount === 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "You have already added!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else if (res.data?.modifiedCount === 1) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "You have successfully selected",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      } catch (error) {
+        console.error("Error selecting class:", error);
       }
-    } catch (error) {
-      console.error("Error selecting class:", error);
+    } else {
+      navigate("/signin");
     }
   };
 

@@ -7,6 +7,7 @@ import { updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../Shared/SocialLogin";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import HeaderName from "../../components/HeaderName";
 
 const SignUp = () => {
   const { createUser, setLoading } = useContext(AuthContext);
@@ -86,9 +87,7 @@ const SignUp = () => {
 
   return (
     <div className="mx-auto py-8">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
-        SignUp Your Account
-      </h1>
+      <HeaderName name={"Create New Account"} />
       <div className="w-full max-w-xl mx-auto bg-white p-4 sm:p-8 rounded-md sm:shadow-md">
         <form onSubmit={handleSubmit(handleEmailRegister)}>
           <div className="mb-4">

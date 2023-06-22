@@ -30,13 +30,14 @@ const PopularInstructors = () => {
             className="card lg:card-side bg-base-100 shadow-xl"
           >
             <figure
-              className="bg-cover bg-center w-52"
+              className="bg-cover bg-center h-52 lg:h-full w-full xl:w-52"
               style={{
                 backgroundImage: `url(${
                   instructor?.image || "https://i.ibb.co/3smZYVQ/instructor.png"
                 })`,
               }}
             ></figure>
+
             <div className="card-body">
               <h2 className="text-3xl font-semibold">{instructor.name}</h2>
               <hr />
