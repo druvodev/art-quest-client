@@ -33,7 +33,7 @@ const PopularClasses = () => {
               style={{ backgroundImage: `url('${item.image}')` }}
             >
               {item?.seats - item?.enrolled > 0 ? (
-                <p className="text-white bg-green-500 text-xl  px-3 py-1 rounded-br-2xl rounded-tl-2xl w-fit shadow-md">
+                <p className="text-white bg-green-500 text-lg sm:text-xl   px-3 py-1 rounded-br-2xl rounded-tl-2xl w-fit shadow-md">
                   Available:{" "}
                   <span className="font-semibold text-2xl">
                     {item?.seats - item?.enrolled}
@@ -51,15 +51,19 @@ const PopularClasses = () => {
                 <div className="flex flex-wrap gap-3 mb-3">
                   <p className="flex gap-1 items-center bg-gray-200 rounded-full pr-2">
                     <MdOutlinePeopleOutline className="text-3xl bg-gray-500 p-1 rounded-full text-white" />{" "}
-                    <span className="text-xl font-semibold">{item?.seats}</span>
+                    <span className="text-lg sm:text-xl  font-semibold">
+                      {item?.seats}
+                    </span>
                   </p>
                   <p className="flex gap-1 items-center bg-gray-200 rounded-full pr-2">
                     <BiDollarCircle className="text-3xl bg-gray-500 p-1 rounded-full text-white" />{" "}
-                    <span className="text-xl font-semibold">{item?.price}</span>
+                    <span className="text-lg sm:text-xl  font-semibold">
+                      {item?.price}
+                    </span>
                   </p>
                   <p className="flex gap-1 items-center bg-gray-200 rounded-full pr-2">
                     <FaChalkboardTeacher className="text-3xl bg-gray-500 p-1 rounded-full text-white" />{" "}
-                    <span className="text-xl font-semibold">
+                    <span className="text-lg sm:text-xl  font-semibold">
                       {item?.instructor}
                     </span>
                   </p>

@@ -50,7 +50,7 @@ const Testimonials = () => {
   return (
     <section>
       <HeaderName name={"Testimonials"} />
-      <div className="py-8">
+      <div className="pb-8">
         <Marquee pauseOnHover={true} speed={30}>
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />

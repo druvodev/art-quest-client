@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../pages/Shared/Navbar";
 import Footer from "../pages/Shared/Footer";
+import NotifyModal from "../components/NotifyModal";
 
 const Main = () => {
   return (
@@ -8,6 +9,7 @@ const Main = () => {
       <Navbar />
       <div className="min-h-[calc(100vh-427.68px)]">
         <Outlet></Outlet>
+        <NotifyModal />
       </div>
       <Footer />
     </div>
